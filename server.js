@@ -3,6 +3,8 @@ const Accounts = require('./data/accounts-model');
 
 const server = express();
 
+server.use(express.json());
+
 // ============ GET ===============
 
 server.get('/', async (req, res) => {
@@ -35,7 +37,7 @@ server.post('/', async (req, res) => {
         res.status(201).json(accounts);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot add account information.'
         });
     }
 });
@@ -46,7 +48,7 @@ server.post('/:id', async (req, res) => {
         res.status(201).json(accountId);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot add account information.'
         });
     }
 });
@@ -59,7 +61,7 @@ server.put('/', async (req, res) => {
         res.status(200).json(accounts);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot update account.'
         });
     }
 });
@@ -70,7 +72,7 @@ server.put('/:id', async (req, res) => {
         res.status(200).json(accountId);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot update account.'
         });
     }
 });
@@ -83,7 +85,7 @@ server.delete('/', async (req, res) => {
         res.status(200).json(accounts);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot remove account.'
         });
     }
 });
@@ -94,7 +96,7 @@ server.delete('/:id', async (req, res) => {
         res.status(200).json(accountId);
     } catch(error) {
         res.status(500).json({
-            message: 'Internal Error. Cannot retrieve accounts.'
+            message: 'Internal Error. Cannot remove account.'
         });
     }
 });
