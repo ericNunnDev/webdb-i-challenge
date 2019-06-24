@@ -7,7 +7,7 @@ server.use(express.json());
 
 // ============ GET ===============
 
-server.get('/', async (req, res) => {
+server.get('/accounts', async (req, res) => {
     try {
         const accounts = await Accounts.find(req.query);
         res.status(200).json(accounts);
@@ -18,7 +18,7 @@ server.get('/', async (req, res) => {
     }
 });
 
-server.get('/:id', async (req, res) => {
+server.get('/accounts/:id', async (req, res) => {
     try {
         const accountId = await Accounts.findById(req.params.id);
         res.status(200).json(accountId);
@@ -31,7 +31,7 @@ server.get('/:id', async (req, res) => {
 
 // ============ POST ===================
 
-server.post('/', async (req, res) => {
+server.post('/accounts', async (req, res) => {
     try {
         const accounts = await Accounts.add(req.query);
         res.status(201).json(accounts);
@@ -42,7 +42,7 @@ server.post('/', async (req, res) => {
     }
 });
 
-server.post('/:id', async (req, res) => {
+server.post('/accounts/:id', async (req, res) => {
     try {
         const accountId = await Accounts.add(req.params.id);
         res.status(201).json(accountId);
@@ -55,7 +55,7 @@ server.post('/:id', async (req, res) => {
 
 // ============= PUT ===================
 
-server.put('/', async (req, res) => {
+server.put('/accounts', async (req, res) => {
     try {
         const accounts = await Accounts.update(req.query);
         res.status(200).json(accounts);
@@ -66,7 +66,7 @@ server.put('/', async (req, res) => {
     }
 });
 
-server.put('/:id', async (req, res) => {
+server.put('/accounts/:id', async (req, res) => {
     try {
         const accountId = await Accounts.update(req.params.id);
         res.status(200).json(accountId);
@@ -79,7 +79,7 @@ server.put('/:id', async (req, res) => {
 
 // ============ DELETE =================
 
-server.delete('/', async (req, res) => {
+server.delete('/accounts', async (req, res) => {
     try {
         const accounts = await Accounts.remove(req.query);
         res.status(200).json(accounts);
@@ -90,7 +90,7 @@ server.delete('/', async (req, res) => {
     }
 });
 
-server.delete('/:id', async (req, res) => {
+server.delete('/accounts/:id', async (req, res) => {
     try {
         const accountId = await Accounts.remove(req.params.id);
         res.status(200).json(accountId);
