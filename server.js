@@ -33,19 +33,13 @@ server.get('/accounts/:id', async (req, res) => {
 
 server.post('/accounts', async (req, res) => {
     try {
-        const accounts = await Accounts.add(req.query);
-        res.status(201).json(accounts);
-    } catch(error) {
-        res.status(500).json({
-            message: 'Internal Error. Cannot add account information.'
-        });
-    }
-});
-
-server.post('/accounts/:id', async (req, res) => {
-    try {
-        const accountId = await Accounts.add(req.params.id);
-        res.status(201).json(accountId);
+        let newAccount = {
+            name: req.body.name,
+            budget: req.body.budget
+        };
+        let createdAccId = await Accounts.add(newAccount);
+        let createdAcc = await Accounts.findById(createdAccId.id);
+        res.status(201).json(createdAcc);
     } catch(error) {
         res.status(500).json({
             message: 'Internal Error. Cannot add account information.'
